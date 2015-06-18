@@ -30,6 +30,7 @@ An R script has to be created called run_analysis.R that does the following:
   > 1. README.md – The current file 
   > 2. run_analysis.R – The R script to perform the above tasks and create a tidy dataset
   > 3. CodeBook.md – The code book that provides details about the raw data, the process to transform it into two tidy datasets, and an explanation of the variables in these datasets.
+  > 4. tidydata.txt - The second tidy dataset containing averages of features for each subject/activity combination (It has 180 rows and 68 columns).
 
 
 ### How to create the tidy dataset
