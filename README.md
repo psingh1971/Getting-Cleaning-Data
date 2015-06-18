@@ -29,7 +29,7 @@ An R script has to be created called run_analysis.R that does the following:
 ### Contents of this Repository
   > 1. README.md – The current file 
   > 2. run_analysis.R – The R script to perform the above tasks and create a tidy dataset
-  > 3. CodeBook.md – The code book that provides details about the raw data, the process to transform it into the tidy dataset (tidydata.txt), and an explanation of the variables in the tidy dataset.
+  > 3. CodeBook.md – The code book that provides details about the raw data, the process to transform it into two tidy datasets, and an explanation of the variables in these datasets.
 
 
 ### How to create the tidy dataset
@@ -37,6 +37,6 @@ An R script has to be created called run_analysis.R that does the following:
   > 2. Copy the "run_analysis.R" file to your current working directory 
   > 3. The script in this .R file requires two external packages – plyr and dplyr
   > 4. Source the script using the following code: `source("run_analysis.R")`
-  > 5. The script creates a tidy dataset in the form of a space delimited text file called "tidydata.txt" in your current working directory. It has 180 rows and 68 columns and can be read into a data frame using the following code: `tidydata <- read.table("tidydata.txt", header=TRUE)`
+  > 5. The script creates two tidy datasets and converts the secong summarized dataset into a space delimited text file called "tidydata.txt" in your current working directory. It has 180 rows and 68 columns and can be read into a data frame using the following code: `tidydata <- read.table("tidydata.txt", header=TRUE)`
   
   
