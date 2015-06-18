@@ -44,7 +44,7 @@ Note: Features in the raw data were normalized and bounded within [-1,1].
 
 ## The Transformation of Raw Data
 
-The included script run_analysis.R was used to transform the above mentioned raw data into a analysis ready tidy dataset. 
+The included script run_analysis.R was used to transform the above mentioned raw data into two analysis ready tidy datasets. 
 
 The following raw data files were used in preparation of the tidy data:
 
@@ -61,31 +61,31 @@ The following raw data files were used in preparation of the tidy data:
 
 The run_analysis.R script performs the following steps:
 
-*1. Download the raw data & upzip it*
+**1. Download the raw data & upzip it**     
 The UCI HAR dataset is downloaded from the following URL: "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip into the "./data" sub-folder within the root directory. The zipped files are extracted into the the "./data/UCI HAR Dataset" sub-folder.
 
-*2. Read the files into datasets*
+**2. Read the files into datasets**    
 The activity, training, and subject files mentioned above are read into datasets.
 
-*3. Combine the training and test datasets*
+**3. Combine the training and test datasets**   
 The datasets are combined together vertically (concatenated) in the order given here: feature datasets (train + test), activity datasets (train + test), subject datasets (train + test). Now we have 3 datasets Activity(10,299 rows, 1 column), Subject(10,299 rows, 1 column), Features(10,299 rows, 561 columns). Descriptive column names are assigned to each of these 3 datasets. The column names for the Features dataset are taken from the "features.txt" file.
 
-*4. Combine the Subject, Feature, and Activity datasets*
+**4. Combine the Subject, Feature, and Activity datasets**      
 These datasets are now horizontally combined to create one wide dataset with 10,299 rows and 563 columns.
 
-*5. Extract features pertaining to mean and standard deviation*
+**5. Extract features pertaining to mean and standard deviation**     
 From the dataset above, features that contain either mean() or std() in their names are retained along with subject ID and activity ID. The resulting dataset, named FinalData, has 10,299 rows and 68 columns.
 
-*6. Use descriptive activity names*
+**6. Use descriptive activity names**    
 Activity labels are read from the 'activity_labels.txt' file and horizontally merged with the dataset above on activity ID to assign descriptive name to each activity. Then the activity names are cleaned to remove underscores and converted to lower case (e.g. walking, walkingupstairs, walkingdownstairs, sitting, standing, and laying).
 
-*7. Appropriately label the dataset with descriptive names*
-Feature labels were made clearer by removing parenthesis and making them self explanatory.
+**7. Appropriately label the dataset with descriptive names**     
+Feature labels are made clearer by removing parenthesis and making them self explanatory.
 
-*8. Create a second tidy dataset*
-The first tidy dataset (FinalData)contains multiple observations pertaining to multiple time windows for each combination of subject and activity. It was summarized to produce average of all features for each activity and subject combination. This dataset (TidyData) has 180 rows and 68 columns. The dataset is then written into a text file - "tidydata.txt".
+**8. Create a second tidy dataset**      
+The first tidy dataset (FinalData) contains multiple observations pertaining to multiple time windows for each combination of subject and activity. It was summarized to produce average of all features for each activity and subject combination. This dataset (TidyData) has 180 rows and 68 columns. The dataset is then written into a text file - "tidydata.txt".
 
-### Description of Variables in the Tidy Datasets
+### Description of Variables in the Tidy Datasets  
 
 Both tidy datasets have the same number of variables. The first dataset created by the transformation process contains multiple observations for each combination of subject and activity, while the second tidy dataset is summarized to contain averages of features for each subject and activity. Both datasets have 68 columns which include:  
 
@@ -94,13 +94,16 @@ Both tidy datasets have the same number of variables. The first dataset created 
 3. A 66 feature vector containing time and frequency signals (numeric). These variables are grouped into the following categories:
 Body Acceleration, Gravity Acceleration, Body Acceleration Jerk, Body Angular Speed, Body Angular Acceleration, Body Acceleration Magnitude,
 Gravity Acceleration Magnitude, Body Acceleration Jerk Magnitude, Body Angular Speed Magnitude, and Body Angular Acceleration Magnitude.
-4. There is at least one time domain variable for each one of these category. These variables begin with the prefix "time". For example - timeBodyAcceleration-Mean-X. 
+4. There is at least one time domain variable for each one of these categories. These variables begin with the prefix "time". For example - timeBodyAcceleration-Mean-X. 
 5. There are some frequency domain variables for some of these categories. These variables begin with the prefix "frequency". For example - frequencyBodyAngularAccelerationMagnitude-Mean
-6. For the above categories, given either time or frequency domain, there are variables that capture either Mean or Standard Deviation.
-7. Some variables end with a -X, -Y, or -Z suffix. That denotes the dimension along which the signal was measured. For example, the variable timeBodyAccelerationJerk-Mean-Y contains time domain data for Body Acceleration Jerk which is a mean of the all the observations for this metric taken on the Y axis.
+6. For the above categories, given either time or frequency domain, the variables capture either Mean or Standard Deviation.
+7. Some variables end with a -X, -Y, or -Z suffix. That denotes the dimension along which the signal was measured. For example, the variable timeBodyAccelerationJerk-Mean-Y contains time domain data for Body Acceleration Jerk which is the mean of the measurements taken for this metric along the Y dimension.
 
 
+-----------------------------------------------------------------------------------------------------------------------------
 
+  
+  
 References
 
 1. Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. A Public Domain Dataset for Human Activity Recognition Using Smartphones. 21th European Symposium on Artificial Neural Networks, Computational Intelligence and Machine Learning, ESANN 2013. Bruges, Belgium 24-26 April 2013.
